@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import InvestmentForm from "./InvestmentForm";
+import InvestmentTable from "./InvestmentTable";
+import logo from "./assets/investment-calculator-logo.png";
 
 function App() {
+  const [yearlyData, setYearlyData] = useState(null);
+
+  function handleYearlyData(value) {
+    setYearlyData(value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="header">
+        <img src={logo} alt="logo" />
+        <h1>Investment Calculator</h1>
       </header>
+      <InvestmentForm onSetData={handleYearlyData} />
+      {/* Todo: Show below table conditionally (only once result data is available) */}
+      {/* Show fallback text if no data is available */}
+      <InvestmentTable data={yearlyData} />
     </div>
   );
 }
