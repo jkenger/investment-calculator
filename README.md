@@ -1,4 +1,4 @@
-# Project Title
+# Investment Calculator
 
 Investment Calculator calculates yearly investment.
 
